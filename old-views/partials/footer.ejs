@@ -1,0 +1,243 @@
+<footer class="footer-dark bg-dark-gray pb-0 pt-0 cover-background">
+  <div class="container pt-4 pb-4 md-pt-45px md-pb-45px">
+    <div class="row justify-content-center">
+      <div class="col-6 col-lg-3 last-paragraph-no-margin order-sm-1 md-mb-50px xs-mb-30px">
+        <a href="/" class="footer-logo mb-15px d-inline-block"><img
+            src="/api/transform/<%= JSON.parse(store_setting.logo)[0] %>"
+            dataat2x="/api/transform/<%= JSON.parse(store_setting.logo)[0] %>" alt /></a>
+        <p class="w-80 sm-w-100">
+          <%= store_setting.address %>
+        </p>
+        <div class="elements-social social-icon-style-02 mt-15px">
+          <ul class="small-icon light">
+            <li>
+              <a class="facebook" href="https://www.facebook.com/" target="_blank"><i
+                  class="fa-brands fa-facebook-f"></i></a>
+            </li>
+            <li>
+              <a class="dribbble" href="http://www.dribbble.com/" target="_blank"><i
+                  class="fa-brands fa-dribbble"></i></a>
+            </li>
+            <li>
+              <a class="twitter" href="https://www.twitter.com/" target="_blank"><i
+                  class="fa-brands fa-twitter"></i></a>
+            </li>
+            <li>
+              <a class="instagram" href="https://www.instagram.com/" target="_blank"><i
+                  class="fa-brands fa-instagram"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div class="col-6 col-lg-2 col-sm-4 xs-mb-30px order-sm-3 order-lg-2">
+        <span class="fs-16 alt-font fw-500 d-block text-white mb-5px">Information</span>
+        <ul>
+          <li><a href="/">About us</a></li>
+          <li>
+            <a href="/assets/demo-decor-store-contact.html">Contact us</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-lg-2 col-sm-4 xs-mb-30px order-sm-3 order-lg-2">
+        <span class="fs-16 alt-font fw-500 d-block text-white mb-5px">Account</span>
+        <ul>
+          <li><a href="/orders">Orders</a></li>
+          <li>
+            <a href="/checkout">Checkout</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-lg-3 col-sm-6 ps-20px sm-ps-15px md-mb-50px xs-mb-0 order-sm-2 order-lg-5">
+        <span class="fs-16 alt-font fw-500 d-block text-white mb-5px">Newsletter</span>
+        <div class="mb-20px">Get everything you need succeed!</div>
+        <div class="d-inline-block w-100 newsletter-style-02 position-relative mb-15px">
+          <form class="position-relative w-100">
+            <input
+              class="bg-blue-tangaroa border-color-transparent-white-light w-100 form-control pe-50px ps-20px lg-ps-15px required"
+              type="email" name="email" placeholder="Enter your email" />
+            <input type="hidden" name="redirect" value />
+            <button class="btn pe-20px submit" aria-label="submit">
+              <i class="icon feather icon-feather-mail icon-small text-white"></i>
+            </button>
+            <div
+              class="form-results border-radius-4px pt-5px pb-5px ps-15px pe-15px fs-14 lh-22 mt-10px w-100 text-center position-absolute d-none">
+            </div>
+          </form>
+        </div>
+        <div class="footer-card">
+          <a href="#" class="d-inline-block me-5px align-middle"><img
+              src="/assets/images/demo-decor-store-payment-icon-01.png" alt /></a>
+          <a href="#" class="d-inline-block me-5px align-middle"><img
+              src="/assets/images/demo-decor-store-payment-icon-02.png" alt /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="border-top border-color-transparent-white-light pt-30px pb-30px">
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-xl-8 last-paragraph-no-margin text-center text-xl-start lg-mt-20px order-3 order-xl-1">
+          <p class="fs-14 mb-0 w-90 xl-w-100">
+            This site is protected by reCAPTCHA and the Google
+            <a href="#" class="text-white text-decoration-line-bottom">privacy policy</a>
+            and terms of service apply.
+          </p>
+          <p class="fs-14 w-90 xl-w-100">
+            &copy; 2024 Crafto is Proudly Powered by
+            <a href="https://www.cometdigisol.com/" target="_blank" class="text-white text-decoration-line-bottom">Comet
+              Digisol</a>
+          </p>
+        </div>
+
+        <div class="col-6 col-xl-2 col-md-3 col-sm-5 text-center text-xl-start order-1 order-xl-2">
+          <span class="lh-26 alt-font d-block">Need support?</span>
+          <a href="tel:12345678910" class="fs-16 text-white fw-500">
+            <%= store_setting.phone_no %>
+          </a>
+        </div>
+        <div class="col-6 col-xl-2 col-md-3 col-sm-5 text-center text-xl-start order-2 order-xl-3">
+          <span class="lh-26 alt-font d-block">Customer care</span>
+          <a class="fs-16 text-white fw-500"><span class="__cf_email__">
+              <%= store_setting.email %>
+            </span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div id="cookies-model" class="cookie-message bg-dark-gray border-radius-8px">
+  <div class="cookie-description fs-14 text-white mb-20px lh-22">
+    We use cookies to enhance your browsing experience, serve personalized
+    ads or content, and analyze our traffic. By clicking "Allow cookies" you
+    consent to our use of cookies.
+  </div>
+  <div class="cookie-btn">
+    <a href="#"
+      class="btn btn-transparent-white border-1 border-color-transparent-white-light btn-very-small btn-switch-text btn-rounded w-100 mb-15px"
+      aria-label="btn">
+      <span>
+        <span class="btn-double-text" data-text="Cookie policy">Cookie policy</span>
+      </span>
+    </a>
+    <a href="#" class="btn btn-white btn-very-small btn-switch-text btn-box-shadow accept_cookies_btn btn-rounded w-100"
+      data-accept-btn aria-label="text">
+      <span>
+        <span class="btn-double-text" data-text="Allow cookies">Allow cookies</span>
+      </span>
+    </a>
+  </div>
+</div>
+
+
+
+<div class="scroll-progress d-none d-xxl-block">
+  <a href="#" class="scroll-top" aria-label="scroll">
+    <span class="scroll-text">Scroll</span><span class="scroll-line"><span class="scroll-point"></span></span>
+  </a>
+</div>
+
+<script data-cfasync="false" src="/assets/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.js"></script>
+<script type="text/javascript" src="/assets/js/vendors.min.js"></script>
+
+<script type="text/javascript" src="/assets/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="/assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
+
+<script type="text/javascript"
+  src="/assets/revolution/revolution-addons/particles/js/revolution.addon.particles.min4bf4.js?ver=1.0.3"></script>
+
+<script type="text/javascript" src="/assets/js/custom.js"></script>
+<script type="text/javascript">
+  /* https://learn.jquery.com/using-jquery-core/document-ready/ */
+  jQuery(document).ready(function () {
+    /* initialize the slider based on the Slider's ID attribute from the wrapper above */
+    jQuery("#decor-store-slider")
+      .show()
+      .revolution({
+        sliderType: "standard",
+        /* sets the Slider's default timeline */
+        delay: 9000,
+        /* options are 'auto', 'fullwidth' or 'fullscreen' */
+        sliderLayout: "fullscreen",
+        /* RESPECT ASPECT RATIO */
+        autoHeight: "off",
+        /* options that disable autoplay */
+        stopLoop: "on",
+        stopAfterLoops: 0,
+        stopAtSlide: 1,
+        navigation: {
+          keyboardNavigation: "on",
+          keyboard_direction: "horizontal",
+          mouseScrollNavigation: "off",
+          mouseScrollReverse: "default",
+          onHoverStop: "off",
+          touch: {
+            touchenabled: "on",
+            touchOnDesktop: "on",
+            swipe_threshold: 75,
+            swipe_min_touches: 1,
+            swipe_direction: "horizontal",
+            drag_block_vertical: true,
+          },
+          arrows: {
+            enable: false,
+            style: "uranus",
+            rtl: false,
+            hide_onleave: false,
+            hide_onmobile: false,
+            hide_under: 0,
+            hide_over: 778,
+            hide_delay: 200,
+            hide_delay_mobile: 1200,
+            left: {
+              container: "slider",
+              h_align: "left",
+              v_align: "center",
+              h_offset: 10,
+              v_offset: 10,
+            },
+            right: {
+              container: "slider",
+              h_align: "right",
+              v_align: "center",
+              h_offset: 10,
+              v_offset: 10,
+            },
+          },
+        },
+        /* Lazy Load options are "all", "smart", "single" and "none" */
+        lazyType: "smart",
+        spinner: "spinner0",
+        /* DISABLE FORCE FULL-WIDTH */
+        fullScreenAlignForce: "off",
+        hideThumbsOnMobile: "off",
+        hideSliderAtLimit: 0,
+        hideCaptionAtLimit: 0,
+        hideAllCaptionAtLilmit: 0,
+        /* [DESKTOP, LAPTOP, TABLET, SMARTPHONE] */
+        responsiveLevels: [1240, 1024, 778, 480],
+        /* [DESKTOP, LAPTOP, TABLET, SMARTPHONE] */
+        gridwidth: [1220, 1024, 778, 480],
+        /* [DESKTOP, LAPTOP, TABLET, SMARTPHONE] */
+        gridheight: [900, 1000, 960, 720],
+        /* [DESKTOP, LAPTOP, TABLET, SMARTPHONE] */
+        visibilityLevels: [1240, 1024, 1024, 480],
+        fallbacks: {
+          simplifyAll: "on",
+          nextSlideOnWindowFocus: "off",
+          disableFocusListener: false,
+        },
+      });
+  });
+</script>
+<script type="text/javascript" src="/assets/js/main.js"></script>
+</body>
+
+<!-- Mirrored from craftohtml.themezaa.com/demo-decor-store.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 Apr 2024 09:24:57 GMT -->
+
+</html>

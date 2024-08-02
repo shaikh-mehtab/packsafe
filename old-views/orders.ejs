@@ -1,0 +1,133 @@
+<%- include('partials/head') %>
+<head>
+  <link
+    href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    .modal-dialog-wide {
+      max-width: 800px !important;
+    }
+    .input-group-small {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .input-group-small input {
+      flex: 1;
+    }
+    .input-group-large input {
+      width: 100%;
+    }
+  </style>
+</head>
+<body data-mobile-nav-style="classic">
+  <%- include('partials/header') %>
+
+  <section
+    class="page-title-center-alignment cover-background top-space-padding"
+    style="background-image: url(<%= globalContent.page_cover %>)"
+  >
+    <div class="container">
+      <div class="row">
+        <div
+          class="col-12 text-center position-relative page-title-extra-large"
+        >
+          <h1
+            class="alt-font d-inline-block fw-700 ls-minus-05px text-base-color mb-10px mt-3 md-mt-50px"
+          >
+          <%= globalContent.page_title %>
+          </h1>
+        </div>
+        <div
+          class="col-12 breadcrumb breadcrumb-style-01 d-flex justify-content-center"
+        >
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li>addresses</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Amount</th>
+                <th>Ship Address </th>
+                <th>Phone Number</th>
+                <th>Order Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% orders.forEach(order => {%>
+                <tr>
+                  <td><%= order.order_id %></td>
+                  <td><%= order.amount %></td>
+                  <td><%= order.address %></td>
+                  <td><%= order.phone_no %></td>
+                  <td><span class=" text-Wasabi"> <% if(order.order_status===-1){%>Failed<%}else if(order.order_status===0){%>Pending payment<%}else if(order.order_status===1){%>Payment Confirmed<%}else if(order.order_status===2){%>Delivery Scheduled<%}else if(order.order_status===3){%>Dispatched<%}else if(order.order_status===4){%>Cancelled <%}%> </span>
+                  </td>
+                  <td>
+                    <a
+                    href="order-details/<%= order.order_id %>"
+                      class="btn btn-base-color  btn-switch-text btn-round-edge btn-box-shadow w-75 text-transform-none"
+                      >
+                      <span>
+                        <span class="btn-double-text" data-text="Details">View More</span>
+                      </span>
+                    </a>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    </section>
+    
+    <script>
+
+      function fillEditForm(
+        id,
+        name,
+        phone_no,
+        locality,
+        address,
+        city,
+        state,
+        landmark,
+        alt_phone,
+        addr_type,
+        pincode,email
+      ) {
+        console.log(email);
+        // Fill the modal form fields with the provided values
+        document.getElementById("editId").value = id;
+        document.getElementById("name").value = name;
+        document.getElementById("phone_no").value = phone_no;
+        document.getElementById("locality").value = locality;
+        document.getElementById("address").value = address;
+        document.getElementById("city").value = city;
+        document.getElementById("state").value = state;
+        document.getElementById("landmark").value = landmark;
+        document.getElementById("alt_phone").value = alt_phone;
+        document.getElementById("addr_type").value = addr_type;
+        document.getElementById("pincode").value = pincode;
+        document.getElementById("email").value = email;
+        
+      }
+    </script>
+    
+    <%- include('partials/footer') %>
+    </body>
+    

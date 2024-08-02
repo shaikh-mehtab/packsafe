@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+  <title>
+    <%= globalContent.page_title %>
+  </title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="author" content="Comet Digisol" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="title" content="<%= globalContent.page_meta_title %>" />
+  <meta charset="utf-8" />
+  <% console.log(store_setting.favicon) %>
+    <meta name="description" content="<%= globalContent.page_meta_desc %>" />
+
+    <link rel="shortcut icon" href="/api/transform/<%= JSON.parse(store_setting.logo)[0] %>" />
+    <link rel="apple-touch-icon" href="/api/transform/<%= JSON.parse(store_setting.logo)[0] %>" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/api/transform/<%= JSON.parse(store_setting.logo)[0] %>" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/api/transform/<%= JSON.parse(store_setting.logo)[0] %>" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+
+    <link rel="stylesheet" type="text/css" href="/assets/revolution/css/settings.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/revolution/css/layers.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/revolution/css/navigation.css" />
+    <!-- Include Toastify CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+
+    <link rel="stylesheet" href="/assets/css/vendors.min.css" />
+    <link rel="stylesheet" href="/assets/css/icon.min.css" />
+    <link rel="stylesheet" href="/assets/css/style.min.css" />
+    <link rel="stylesheet" href="/assets/css/responsive.min.css" />
+    <link rel="stylesheet" href="/assets/demos/decor-store/decor-store.css" />
+
+    <script type="text/javascript"
+      src="/assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+    <script type="text/javascript" src="/assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+    <script type="text/javascript"
+      src="/assets/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+    <script type="text/javascript"
+      src="/assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</head>
+
+</html>

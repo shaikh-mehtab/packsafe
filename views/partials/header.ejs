@@ -1,0 +1,180 @@
+<header class="header-with-topbar">
+  <div
+    class="header-top-bar top-bar-light bg-white disable-fixed border-bottom border-color-transparent-dark-very-light">
+    <div class="container-fluid">
+      <div class="row h-45px align-items-center m-0">
+        <div class="col-lg-7 col-md-8 text-center text-md-start">
+          <div class="fs-13 text-dark-gray alt-font fw-600">
+            Don't miss discount.
+            <a href="/shop" class="text-dark-gray fw-700 text-decoration-line-bottom">Shop now</a>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-4 text-end d-none d-md-flex">
+          <a href="/contact" class="widget fs-13 text-dark-gray fw-600 me-25px md-me-15px text-dark-gray"><i
+              class="feather icon-feather-phone-call"></i>Customer
+            service</a>
+          <a href="/contact" class="widget fs-13 text-dark-gray alt-font me-25px fw-600 d-none d-lg-inline-block"><i
+              class="feather icon-feather-map-pin"></i>Find our store</a>
+          <div class="header-language-icon widget fs-13 alt-font fw-600">
+            <div class="header-language dropdown">
+              <a class="text-dark-gray"><i class="feather icon-feather-globe"></i>English</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg header-light bg-transparent disable-fixed" data-header-hover="light">
+    <div class="container-fluid">
+      <div class="col-auto">
+        <a class="navbar-brand" href="/">
+          <img src="/api/transform/<%= JSON.parse(store_setting.logo)[0] %>"
+            dataat2x="/api/transform/<%= JSON.parse(store_setting.logo)[0] %>" alt class="default-logo" />
+          <img src="/api/transform/<%= JSON.parse(store_setting.logo)[0] %>"
+            dataat2x="/api/transform/<%= JSON.parse(store_setting.logo)[0] %>" alt class="alt-logo" />
+          <img src="/api/transform/<%= JSON.parse(store_setting.logo)[0] %>"
+            dataat2x="/api/transform/<%= JSON.parse(store_setting.logo)[0] %>" alt class="mobile-logo" />
+        </a>
+      </div>
+      <div class="col-auto menu-order position-static xs-ps-0">
+        <button class="navbar-toggler float-start" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-label="Toggle navigation">
+          <span class="navbar-toggler-line"></span>
+          <span class="navbar-toggler-line"></span>
+          <span class="navbar-toggler-line"></span>
+          <span class="navbar-toggler-line"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav alt-font">
+            <% for(var c=0;c<main_menu.length;c++) { %>
+              <% if(main_menu[c].menu_type==1){ %>
+                <li class="nav-item">
+                  <a href="<%= main_menu[c].direct_link %>" class="nav-link">
+                    <%= main_menu[c].name %>
+                  </a>
+                </li>
+                <% }else if(main_menu[c].menu_type==2){%>
+                  <li class="nav-item dropdown simple-dropdown">
+                    <a href="<%= main_menu[c].direct_link %>" class="nav-link">
+                      <%= main_menu[c].name %><span
+                          class="label bg-base-color text-white text-uppercase border-radius-26px">Hot</span>
+                    </a>
+                    <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownMenuLink1" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false"></i>
+                    <ul style="width: 300px" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                      <% for(var x=0;x<main_menu[c].menu_options.length;x++) { %>
+                        <li>
+                          <a href="<%= main_menu[c].menu_options[x].link %>">
+                            <%= main_menu[c].menu_options[x].name %>
+                          </a>
+                        </li>
+                        <% }%>
+
+                    </ul>
+                  </li>
+                  <% }%>
+                    <% }%>
+
+
+          </ul>
+        </div>
+      </div>
+      <div class="col-auto ms-auto">
+        <div class="header-icon">
+          <!-- <div class="header-search-icon icon">
+              <a href="javascript:void(0)" class="search-form-icon header-search-form"><i
+                  class="feather icon-feather-search"></i></a>
+              <div class="search-form-wrapper">
+                <button title="Close" type="button" class="search-close alt-font">
+                  ×
+                </button>
+                <form id="search-form" role="search"class="search-form bg-white">
+                  <div class="search-form-box">
+                    <h2 class="text-dark-gray text-center mb-7 alt-font fw-700 ls-minus-1px">
+                      What are you looking for?
+                    </h2>
+                    <input class="search-input alt-font" id="search-form-input5e219ef164995"
+                      placeholder="Enter your keywords..." name="s" value type="text" autocomplete="off" />
+                    <button type="" class="search-button">
+                      <i class="feather icon-feather-search" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div> -->
+          <div class="header-cart-icon icon">
+            <div class="header-cart dropdown">
+              <a href="javascript:void(0);"><i class="feather icon-feather-shopping-bag"></i><span
+                  class="cartCountContainer cart-count alt-font totalCountDisplayer">
+                  <%= cart.totalCount || 0 %>
+                </span></a>
+              <ul class="cart-item-list">
+                <% if(cart.products) { for(var c=0;c<cart.products.length;c++) { %>
+                  <li class="cart-item align-items-center">
+                    <a id="cart-product-remove" class="alt-font close" style="cursor: pointer;"
+                      data-id="<%= cart.products[c].id %>">×</a>
+                    <div class="product-image">
+                      <a href="/product/<%= cart.products[c].slug %>"><img
+                          src="/api/transform/<%= JSON.parse(cart.products[c].data_image) %>" class="cart-thumb" alt /></a>
+                    </div>
+                    <div class="product-detail alt-font fw-600">
+                      <a href="/product/<%= cart.products[c].slug %>">
+                        <%= cart.products[c].name %>
+                      </a>
+                      <span class="item-ammount fw-500">
+                        <%= cart.products[c].quantity %> x <%= cart.products[c].spl_price %>
+                      </span>
+                    </div>
+                  </li>
+                  <% } }%>
+                    <li class="cart-total">
+                      <div class="alt-font mb-15px">
+                        <span class="w-50 fw-500">Subtotal:</span><span
+                          class="totalAmountContainer w-50 text-end fw-700">
+                          <%= parseFloat(cart.totalAmount).toFixed(2) %>
+                        </span>
+                      </div>
+                      <a href="/cart"
+                        class="btn btn-large btn-transparent-base-color border-color-extra-medium-gray btn-round-edge">View
+                        cart</a>
+                      <% if (cart.totalCount) { %>
+                        <a href="/checkout"
+                          class="btn btn-large btn-base-color btn-box-shadow btn-round-edge">Checkout</a>
+                        <% }else{ %>
+                          <a href="#"
+                            class="btn btn-large btn-medium-gray btn-box-shadow btn-round-edge">Nothing to checkout</a>
+                          <% } %>
+                    </li>
+              </ul>
+            </div>
+          </div>
+          <div class="widget-text ms-25px md-ms-20px alt-font">
+            <% if(user.id) {%>
+              <ul class="navbar-nav alt-font">
+                <li class="nav-item dropdown simple-dropdown">
+                  <a href="javascript:void(0);" class="nav-link">
+                    <%= user.name %>
+                  </a>
+                  <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownMenuLink1" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false"></i>
+                  <ul style="width: 200px" class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                    <li>
+                      <a href="/orders">Orders</a>
+                      <a href="/address">Addresses</a>
+                      <span id="logout-btn" style="cursor: pointer;">Logout</span>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <% }else{%><a href="/login" class="fs-17 fw-600"><i
+                    class="feather icon-feather-user d-inline-block d-xl-none"></i><span
+                    class="d-none d-xl-inline-block">Login </span></a>
+                <% }%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

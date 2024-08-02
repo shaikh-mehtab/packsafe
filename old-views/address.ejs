@@ -1,0 +1,322 @@
+<%- include('partials/head') %>
+<head>
+  <link
+    href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    .modal-dialog-wide {
+      max-width: 800px !important;
+    }
+    .input-group-small {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .input-group-small input {
+      flex: 1;
+    }
+    .input-group-large input {
+      width: 100%;
+    }
+  </style>
+</head>
+<body data-mobile-nav-style="classic">
+  <%- include('partials/header') %>
+
+  <section
+    class="page-title-center-alignment cover-background top-space-padding"
+    style="background-image: url(<%= globalContent.page_cover %>)"
+  >
+    <div class="container">
+      <div class="row">
+        <div
+          class="col-12 text-center position-relative page-title-extra-large"
+        >
+          <h1
+            class="alt-font d-inline-block fw-700 ls-minus-05px text-base-color mb-10px mt-3 md-mt-50px"
+          >
+            <%= globalContent.breadcrumb_name %>
+          </h1>
+        </div>
+        <div
+          class="col-12 breadcrumb breadcrumb-style-01 d-flex justify-content-center"
+        >
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><%= globalContent.breadcrumb_name %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Phone No</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Address Type</th>
+                <th>ZIP</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% addresses.forEach(address => {%>
+                <tr>
+                  <td><%= address.name %></td>
+                  <td><%= address.phone_no %></td>
+                  <td><%= address.city %></td>
+                  <td><%= address.state %></td>
+                  <td><% if(address.addr_type===1){%>Office <%}else{%>Home <%}%></td>
+                  <td><%= address.pincode %></td>
+                  <td>
+                    <!-- <button
+                      class="btn btn-base-color  btn-switch-text btn-round-edge btn-box-shadow w-55 text-transform-none"
+                      data-bs-toggle="modal"
+                      data-bs-target="#editAddressModal"
+                      onclick="fillEditForm('<%= address.id %>', '<%= address.name %>', '<%= address.phone_no %>', '<%= address.locality %>', '<%= address.address %>', '<%= address.city %>', '<%= address.state %>', '<%= address.landmark %>', '<%= address.alt_phone %>', '<%= address.addr_type %>', '<%= address.pincode %>','<%= address.email %>',)"
+                    >
+                      <span>
+                        <span class="btn-double-text" data-text="Edit">Edit</span>
+                      </span>
+                    </button> -->
+                    <button
+                      class="btn btn-base-color btn-switch-text btn-round-edge btn-box-shadow w-55 text-transform-none mt-2"
+                    >
+                      <span>
+                        <span class="btn-double-text" data-text="Delete">Delete</span>
+                      </span>
+                    </button>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Edit Address Modal -->
+  <div
+    class="modal fade"
+    id="editAddressModal"
+    tabindex="-1"
+    aria-labelledby="editAddressModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-wide">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editAddressModalLabel">Edit Address</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form id="addressEditForm">
+            <input type="hidden" id="editId" name="id" />
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="First Name"
+                name="name"
+                id="name"
+                required
+              />
+            </div>
+            <div class="input-group input-group-small mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Phone Number"
+                id="phone_no"
+                name="phone_no"
+                required
+              />
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Alternate Phone"
+                id="alt_phone"
+                name="alt_phone"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="locality" class="form-label">Locality</label>
+              <input
+                type="text"
+                class="form-control"
+                id="locality"
+                name="locality"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">Address</label>
+              <input
+                type="text"
+                class="form-control"
+                id="address"
+                name="address"
+                required
+              />
+            </div>
+            <div class=" mb-3">
+              <label for="city" class="form-label">City/Town</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="City"
+                id="city"
+                name="city"
+                required
+              />
+            </div>
+            <div class=" mb-3">
+              <label for="state" class="form-label">State</label>
+              <select
+                class="form-control"
+                placeholder="State"
+                id="state"
+                name="state"
+                required
+              >
+              <option value>Select a State</option>
+              <option value="Andhra Pradesh">Andhra Pradesh</option>
+              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chhattisgarh">Chhattisgarh</option>
+              <option value="Goa">Goa</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Haryana">Haryana</option>
+              <option value="Himachal Pradesh">Himachal Pradesh</option>
+              <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+              <option value="Jharkhand">Jharkhand</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Kerala">Kerala</option>
+              <option value="Madya Pradesh">Madya Pradesh</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Manipur">Manipur</option>
+              <option value="Meghalaya">Meghalaya</option>
+              <option value="Mizoram">Mizoram</option>
+              <option value="Nagaland">Nagaland</option>
+              <option value="Orissa">Orissa</option>
+              <option value="Punjab">Punjab</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Sikkim">Sikkim</option>
+              <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="Telagana">Telagana</option>
+              <option value="Tripura">Tripura</option>
+              <option value="Uttaranchal">Uttaranchal</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="West Bengal">West Bengal</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="landmark" class="form-label">Landmark</label>
+              <input
+                type="text"
+                class="form-control"
+                id="landmark"
+                name="landmark"
+                required
+              />
+            </div>
+            <div class="mb-3">   
+              <label for="addr_type" class="form-label">Address Type</label>
+              <select
+                class="form-control"
+                id="addr_type"
+                name="addr_type"
+                
+                required
+              >
+                <option value>Select a Address type</option>
+                <option value="1">Office </option>
+                <option value="0">Home </option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="pincode" class="form-label">Pincode</label>
+              <input
+                type="text"
+                class="form-control"
+                id="pincode"
+                name="pincode"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn btn-base-color btn-extra-large btn-switch-text btn-round-edge btn-box-shadow w-20 p-2 text-transform-none"
+            >
+              Save changes
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+    </section>
+    
+    <script>
+
+      function fillEditForm(
+        id,
+        name,
+        phone_no,
+        locality,
+        address,
+        city,
+        state,
+        landmark,
+        alt_phone,
+        addr_type,
+        pincode,email
+      ) {
+        console.log(email);
+        // Fill the modal form fields with the provided values
+        document.getElementById("editId").value = id;
+        document.getElementById("name").value = name;
+        document.getElementById("phone_no").value = phone_no;
+        document.getElementById("locality").value = locality;
+        document.getElementById("address").value = address;
+        document.getElementById("city").value = city;
+        document.getElementById("state").value = state;
+        document.getElementById("landmark").value = landmark;
+        document.getElementById("alt_phone").value = alt_phone;
+        document.getElementById("addr_type").value = addr_type;
+        document.getElementById("pincode").value = pincode;
+        document.getElementById("email").value = email;
+        
+      }
+    </script>
+    
+    <%- include('partials/footer') %>
+    </body>
+    

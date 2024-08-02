@@ -1,0 +1,620 @@
+﻿<%- include('partials/head') %>
+  <body data-mobile-nav-style="classic">
+    <%- include('partials/header') %>
+      <section class="page-title-center-alignment cover-background top-space-padding"
+      style="background-image: url('<%= JSON.parse(globalContent.page_cover)[0] %>')">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center position-relative page-title-extra-large">
+              <h1 class="alt-font d-inline-block fw-700 ls-minus-05px text-base-color mb-10px mt-3 md-mt-50px">
+                Checkout
+              </h1>
+            </div>
+            <div class="col-12 breadcrumb breadcrumb-style-01 d-flex justify-content-center">
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li>Checkout</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="container mb-8">
+        <div class="row justify-content-center mt-2 mb-8 align-items-center">
+          <% if(!user.name){%>
+            <div class="col-auto icon-with-text-style-08 lg-mb-10px">
+              <div class="feature-box feature-box-left-icon">
+                <div class="feature-box-icon me-5px">
+                  <i class="feather icon-feather-user top-9px position-relative text-dark-gray icon-small"></i>
+                </div>
+                <div class="feature-box-content">
+                  <span class="d-inline-block text-dark-gray align-middle alt-font fw-500">Returning customer?
+                    <a href="/login" class="text-decoration-line-bottom fw-600 text-dark-gray">Click here to
+                      login</a></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-auto d-none d-lg-inline-block">
+              <span class="w-1px h-20px bg-extra-medium-gray d-block"></span>
+            </div>
+            <% } %>
+            <div class="col-auto icon-with-text-style-08">
+              <div class="feature-box feature-box-left-icon">
+                <!-- <div class="feature-box-icon me-5px">
+                  <i class="feather icon-feather-scissors top-9px position-relative text-dark-gray icon-small"></i>
+                </div> -->
+                <!-- <div class="feature-box-content" data-toggle="modal" data-target="#couponModal">
+                  <span class="d-inline-block text-dark-gray align-middle alt-font fw-500">Have a coupon?
+                    <a  href="#subscribe-popup" class="text-decoration-line-bottom fw-600 text-dark-gray">Click here to enter your
+                      code</a></span>
+                </div> -->
+                <a href="#subscribe-popup" class="btn btn-extra-large btn-base-color btn-box-shadow text-transform-none btn-rounded btn-hover-animation-switch slide-up-animation">
+                  <span>
+                  <span id="c_form_text" class="btn-text">Have a coupon ?   Click here to enter your code</span>
+                  <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                  <span class="btn-icon"><i class="feather icon-feather-arrow-right"></i></span>
+                  </span>
+                  </a>
+              </div>
+            </div>
+        </div>
+        <div id="subscribe-popup" class="mfp-hide ">
+          <div class="container">
+          <div class="row justify-content-center">
+          <div class="col-xl-6 col-md-10 bg-white">
+          <div class="row position-relative box-shadow-quadruple-large">
+          <!-- <div class="col-lg-6 cover-background md-h-400px xs-h-300px" style="background-image:url('/images/newsletter-popup-img-01.jpg');"></div> -->
+          <div class="col-12 newsletter-popup p-8 pt-10 pb-10 lg-p-5 md-p-6 xs-p-8 position-relative">
+          <h4 class="d-inline-block alt-font ls-minus-1px fw-700 text-dark-gray mb-15px">Enter your code</h4>
+          <p>Coupons are valid for a limited time only and may expire at any time.<span class="text-red"> Coupons may only be used once per customer and cannot be reverted*</span></p>
+
+          <div class="d-inline-block w-100 newsletter-style-05 position-relative mb-20px">
+          <form id="coupon-form">
+          <input class="input-medium w-100 border-radius-4px form-control required mb-15px" type="text" name="code" placeholder="Enter your coupon code" />
+          <input type="number" name="user_id" value="<%if(user.id){%><%=user.id %>}else{%>0<%} %>" hidden/>
+          <input type="number" name="amount" value="<%=cart.totalAmount %>" hidden/>
+          <a id="coupon-submitter" class="btn btn-medium btn-round-edge btn-dark-gray btn-box-shadow w-100">Use now!</a>
+          <div id="coupon-result" class="form-results border-radius-4px mt-10px lh-normal pt-10px pb-10px ps-15px pe-15px fs-16 w-100 text-center position-absolute z-index-1 " style="display: none;"></div>
+          </form>
+          </div>
+          <!-- <label for="newsletter-off" class="fs-15"><input class="w-auto me-10px position-relative top-1px p-0" type="checkbox" id="newsletter-off" name="newsletter-off">Don't show this popup again</label> -->
+          </div>
+          <button title="Close (Esc)" type="button" class="mfp-close text-dark-gray"></button>
+          </div>
+          </div>
+          </div>
+          </div>
+          </div>
+        <div class="position-relative">
+          <div class="row">
+            <div class="col-xl-3 col-lg-3 tab-style-07 md-mb-50px sm-mb-35px"
+              data-anime="{ &quot;translate&quot;: [50, 0], &quot;opacity&quot;: [0,1], &quot;duration&quot;: 600, &quot;delay&quot;:100, &quot;staggervalue&quot;: 150, &quot;easing&quot;: &quot;easeOutQuad&quot; }">
+              <div class="position-sticky top-50px">
+                <ul
+                  class="nav nav-tabs justify-content-center border-0 fw-500 text-left alt-font bg-very-light-gray border-radius-6px overflow-hidden">
+                  <li class="nav-item">
+                    <a data-bs-toggle="tab" href="#tab_seven1" class="nav-link active">
+                      <span>
+                        <span class="me-5px"><i class="bi bi-file-text"></i></span>
+                        <span>Billing Details</span>
+                      </span>
+                      <span class="bg-hover bg-base-color"></span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tab_seven2">
+                      <span>
+                        <span class="me-5px"><i class="bi bi-bag-plus"></i></span>
+                        <span>Place Order </span>
+                      </span>
+                      <span class="bg-hover bg-base-color"></span>
+                    </a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-8 offset-xl-1 lg-ps-50px md-ps-15px"
+              data-anime="{ &quot;translateX&quot;: [0, 0], &quot;opacity&quot;: [0,1], &quot;duration&quot;: 600, &quot;delay&quot;:150, &quot;staggervalue&quot;: 150, &quot;easing&quot;: &quot;easeOutQuad&quot; }">
+              <div class="tab-content h-100">
+                <div class="tab-pane fade in active show" id="tab_seven1">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="accordion accordion-style-02" id="accordion-style-01"
+                        data-active-icon="icon-feather-minus" data-inactive-icon="icon-feather-plus">
+                        <form id="new-address-form">
+                          <input hidden type="number" name="user_id" value="<%= user.id %>" />
+                          <input hidden type="text" name="coupon_code" id="coupon_input"  />
+                          <input hidden type="number" name="amount" value="<%= parseFloat(cart.totalAmount).toFixed(2) %>" />
+                          <div class="accordion-item active-accordion">
+                            <div class="accordion-header border-bottom border-color-extra-medium-gray pt-0">
+                              <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-01-01"
+                                aria-expanded="true" data-bs-parent="#accordion-style-01">
+                                <div class="accordion-title mb-0 position-relative text-dark-gray">
+                                  <i class="feather icon-feather-minus"></i><span class="fw-500 fs-18">
+                                    <% if(user.name) {%>Add New Address <% }else{%>Specify Address <% } %>
+                                  </span>
+                                </div>
+                              </a>
+                            </div>
+                            <div id="accordion-style-01-01" class="accordion-collapse collapse show"
+                              data-bs-parent="#accordion-style-01">
+                              <div
+                                class="accordion-body last-paragraph-no-margin border-bottom border-color-light-medium-gray">
+                                <div class="col-12 pe-50px md-pe-15px md-mb-50px xs-mb-35px">
+
+                                  <div class="row">
+                                    <divs class="col-md-6 mb-20px">
+                                      <label class="mb-10px">Name <span class="text-red">*</span></label>
+                                      <input class="border-radius-4px input-small" type="text" name="name"
+                                        aria-label="text" required />
+                                    </divs>
+
+
+                                    <div class="col-12 mb-20px">
+                                      <label class="mb-10px" for="contry1">State <span class="text-red">*</span></label>
+                                      <select name="state" id="state" class="form-select select-small">
+                                        <option value>Select a State</option>
+                                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                        <option value="Assam">Assam</option>
+                                        <option value="Bihar">Bihar</option>
+                                        <option value="Chhattisgarh">Chhattisgarh</option>
+                                        <option value="Goa">Goa</option>
+                                        <option value="Gujarat">Gujarat</option>
+                                        <option value="Haryana">Haryana</option>
+                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                        <option value="Jharkhand">Jharkhand</option>
+                                        <option value="Karnataka">Karnataka</option>
+                                        <option value="Kerala">Kerala</option>
+                                        <option value="Madya Pradesh">Madya Pradesh</option>
+                                        <option value="Maharashtra">Maharashtra</option>
+                                        <option value="Manipur">Manipur</option>
+                                        <option value="Meghalaya">Meghalaya</option>
+                                        <option value="Mizoram">Mizoram</option>
+                                        <option value="Nagaland">Nagaland</option>
+                                        <option value="Orissa">Orissa</option>
+                                        <option value="Punjab">Punjab</option>
+                                        <option value="Rajasthan">Rajasthan</option>
+                                        <option value="Sikkim">Sikkim</option>
+                                        <option value="Tamil Nadu">Tamil Nadu</option>
+                                        <option value="Telagana">Telagana</option>
+                                        <option value="Tripura">Tripura</option>
+                                        <option value="Uttaranchal">Uttaranchal</option>
+                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                        <option value="West Bengal">West Bengal</option>
+                                      </select>
+                                    </div>
+                                    <div class="col-12 mb-10px">
+                                      <label class="mb-10px">Street address <span class="text-red">*</span></label>
+                                      <textarea rows="3" class="border-radius-4px input-small mb-10px" type="text"
+                                        name="address" placeholder="House number and street name"></textarea>
+                                    </div>
+                                    <div class="col-12 mb-20px">
+                                      <label class="mb-10px">Locality <span class="text-red">*</span></label>
+                                      <input class="border-radius-4px input-small" name="locality" type="text"
+                                        required />
+                                    </div>
+                                    <div class="col-12 mb-20px">
+                                      <label class="mb-10px">Landmark</label>
+                                      <input class="border-radius-4px input-small" name="landmark" type="text"
+                                        required />
+                                    </div>
+                                    <div class="col-12 mb-20px">
+                                      <label class="mb-10px">Town / City <span class="text-red">*</span></label>
+                                      <input class="border-radius-4px input-small" name="city" type="text" required />
+                                    </div>
+                                    <div class="col-12 mb-20px">
+                                      <label class="mb-10px" for="addr_type">Address Type <span
+                                          class="text-red">*</span></label>
+                                      <select name="addr_type" id="state" class="form-select select-small">
+                                        <option value>Select a Address type</option>
+                                        <option value="1">Office </option>
+                                        <option value="0">Home </option>
+
+                                      </select>
+                                    </div>
+                                    <div class="col-12 mb-20px">
+                                      <label class="mb-10px">ZIP <span class="text-red">*</span></label>
+                                      <input class="border-radius-4px input-small" name="pincode" type="text"
+                                        required />
+                                    </div>
+                                    <div class="col-12 mb-20px">
+                                      <label class="mb-10px">Phone <span class="text-red">*</span></label>
+                                      <input class="border-radius-4px input-small" name="phone_no" type="text"
+                                        required />
+                                    </div>
+                                    <div class="col-12 mb-20px">
+                                      <label class="mb-10px">Email <span class="text-red">*</span></label>
+                                      <input class="border-radius-4px input-small" name="email" type="email" required />
+                                    </div>
+                                    <div class="col-12 mb-20px">
+                                      <label class="mb-10px">Alternate Phone <span class="text-red">*</span></label>
+                                      <input class="border-radius-4px input-small" name="alt_phone" type="text"
+                                        required />
+                                    </div>
+                                    <!-- <div class="col-12 mb-20px checkout-accordion">
+                                      <div
+                                          class="position-relative terms-condition-box text-start d-flex align-items-center">
+                                      <input type="checkbox" name="diffrent_ship_address"
+                                              id="diffrent_ship_address23" 
+                                              />
+                                              <span class="box">Ship to a Same address?</span>
+                                    </div> 
+                                    </div>-->
+
+                                      <div class="col-md-12 mb-20px checkout-accordion">
+                                        <div
+                                          class="position-relative terms-condition-box text-start d-flex align-items-center">
+                                          <label>
+                                            <input type="checkbox" name="diffrent_ship_address"
+                                              id="diffrent_ship_address2" value="1"
+                                              class="terms-condition check-box align-middle" />
+                                            <span class="box">Ship to a different address?</span>
+                                            <a class="accordion-toggle" data-bs-toggle="collapse"
+                                              data-bs-parent="#accordion1" href="#collapseFour"></a>
+                                          </label>
+                                        </div>
+                                        <div id="collapseFour" class="collapse">
+                                          <div class="row ps-30px mb-30px mt-15px">
+                                            <div class="col-md-6 mb-15px">
+                                              <label class="mb-10px">Name <span class="text-red">*</span></label>
+                                              <input class="border-radius-4px input-small" name="ship_name" type="text"
+                                                required />
+                                            </div>
+                                            <div class="col-md-6 mb-15px">
+                                              <label class="mb-10px">Phone<span class="text-red">*</span></label>
+                                              <input class="border-radius-4px input-small" name="ship_phone_no"
+                                                type="text" required />
+                                            </div>
+
+                                            <div class="col-12 mb-15px">
+                                              <label class="mb-10px" for="ship_state">State <span
+                                                  class="text-red">*</span></label>
+                                              <select name="ship_state" id="ship_state"
+                                                class="form-select select-small">
+                                                <option value>Select a State</option>
+                                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                                <option value="Assam">Assam</option>
+                                                <option value="Bihar">Bihar</option>
+                                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                                <option value="Goa">Goa</option>
+                                                <option value="Gujarat">Gujarat</option>
+                                                <option value="Haryana">Haryana</option>
+                                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                                <option value="Jharkhand">Jharkhand</option>
+                                                <option value="Karnataka">Karnataka</option>
+                                                <option value="Kerala">Kerala</option>
+                                                <option value="Madya Pradesh">Madya Pradesh</option>
+                                                <option value="Maharashtra">Maharashtra</option>
+                                                <option value="Manipur">Manipur</option>
+                                                <option value="Meghalaya">Meghalaya</option>
+                                                <option value="Mizoram">Mizoram</option>
+                                                <option value="Nagaland">Nagaland</option>
+                                                <option value="Orissa">Orissa</option>
+                                                <option value="Punjab">Punjab</option>
+                                                <option value="Rajasthan">Rajasthan</option>
+                                                <option value="Sikkim">Sikkim</option>
+                                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                                <option value="Telagana">Telagana</option>
+                                                <option value="Tripura">Tripura</option>
+                                                <option value="Uttaranchal">Uttaranchal</option>
+                                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                <option value="West Bengal">West Bengal</option>
+                                              </select>
+                                            </div>
+                                            <div class="col-12 mb-15px">
+                                              <label class="mb-10px">Shipping address <span
+                                                  class="text-red">*</span></label>
+                                              <textarea class="border-radius-4px input-small mb-20px" type="text"
+                                                name="ship_address" rows="3"
+                                                placeholder="House number and street name"></textarea>
+                                            </div>
+                                            <div class="col-12">
+                                              <label class="mb-10px">Locality <span class="text-red">*</span></label>
+                                              <input name="ship_locality" class="border-radius-4px input-small"
+                                                type="text" required />
+                                            </div>
+                                            <div class="col-12 mb-15px">
+                                              <label class="mb-10px"> Landmark</label>
+                                              <input class="border-radius-4px input-small" name="ship_landmark"
+                                                type="text" required />
+                                            </div>
+                                            <div class="col-12 mb-15px">
+                                              <label class="mb-10px">Town / City <span class="text-red">*</span></label>
+                                              <input class="border-radius-4px input-small" name="ship_city" type="text"
+                                                required />
+                                            </div>
+                                            <select name="ship_addr_type" id="state" class="form-select select-small">
+                                              <option value>Select a Address type</option>
+                                              <option value="1">Office </option>
+                                              <option value="0">Home </option>
+      
+                                            </select>
+                                            <div class="col-12">
+                                              <label class="mb-10px">ZIP <span class="text-red">*</span></label>
+                                              <input name="ship_pincode" class="border-radius-4px input-small"
+                                                type="text" required />
+                                            </div>
+                                            <div class="col-12">
+                                              <label class="mb-10px">Email <span class="text-red">*</span></label>
+                                              <input name="ship_email" class="border-radius-4px input-small"
+                                                type="text" required />
+                                            </div>
+                                            <div class="col-12">
+                                              <label class="mb-10px">Alternate Phone No. <span class="text-red">*</span></label>
+                                              <input name="ship_alt_phone" class="border-radius-4px input-small"
+                                                type="text" required />
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <% if(user.name && savedAddress.length !=0) {%>
+                            <div class="accordion-item">
+                              <div class="accordion-header border-bottom border-color-extra-medium-gray">
+                                <a href="#" data-bs-toggle="collapse" data-bs-target="#accordion-style-01-02"
+                                  aria-expanded="false" data-bs-parent="#accordion-style-01">
+                                  <div class="accordion-title mb-0 position-relative text-dark-gray">
+                                    <i class="feather icon-feather-plus"></i><span class="fw-500 fs-17">Choose From Your
+                                      Saved Addresses</span>
+                                  </div>
+                                </a>
+                              </div>
+                              <div id="accordion-style-01-02" class="accordion-collapse collapse"
+                                data-bs-parent="#accordion-style-01">
+                                <div
+                                  class="accordion-body last-paragraph-no-margin border-bottom border-color-light-medium-gray">
+                                  <div class="row g-0 text-gray mb-4 md-mb-35px">
+                                    Billing Address
+                                    <div
+                                      class="col-12 border-bottom border-color-extra-medium-gray pb-40px mb-40px xs-pb-30px xs-mb-30px">
+                                      <% for(var s=0; s<savedAddress.length;s++){%>
+                                        <div class="d-block d-md-flex mb-4 w-100 align-items-center">
+                                          <div class="w-100px sm-w-100 sm-mb-10px text-center">
+                                            <span class="text-dark-gray fw-600 d-block">
+                                              <input type="checkbox" name="savedAddress" value="<%= savedAddress[s].id %>"
+                                                class="terms-condition check-box single-checkbox1 align-middle" /></span>
+                                          </div>
+                                          <div
+                                            class="w-100 last-paragraph-no-margin sm-ps-0 position-relative text- text-md-start">
+
+                                            <a href="#"
+                                              class="w-65px bg-light-red border-radius-15px fs-13 text-dark-gray fw-600 text-center position-absolute sm-position-relative d-inline-block d-md-block right-0px top-0px"></a>
+                                            <p class="w-85 sm-w-100 sm-mt-15px">
+                                              <span class="text-dark-gray fs- ">
+                                                <%= savedAddress[s].name %>
+                                              </span><br />
+                                              <%= savedAddress[s].address +" "+ savedAddress[s].city +" "+ savedAddress[s].state %>
+                                            </p>
+                                          </div>
+                                        </div>
+                                        <% } %>                     
+                                    </div>
+                                    Shipping Address
+                                    <div
+                                      class="col-12 border-bottom border-color-extra-medium-gray pb-40px mb-40px xs-pb-30px xs-mb-30px">
+                                      <% for(var s=0; s<savedAddress.length;s++){%>
+                                        <div class="d-block d-md-flex mb-4 w-100 align-items-center">
+                                          <div class="w-100px sm-w-100 sm-mb-10px text-center">
+                                            <span class="text-dark-gray fw-600 d-block">
+                                              <input type="checkbox" name="shipSavedAddress" value="<%= savedAddress[s].id %>"
+                                                class="terms-condition check-box single-checkbox2 align-middle" /></span>
+                                          </div>
+                                          <div
+                                            class="w-100 last-paragraph-no-margin sm-ps-0 position-relative text- text-md-start">
+
+                                            <a href="#"
+                                              class="w-65px bg-light-red border-radius-15px fs-13 text-dark-gray fw-600 text-center position-absolute sm-position-relative d-inline-block d-md-block right-0px top-0px"></a>
+                                            <p class="w-85 sm-w-100 sm-mt-15px">
+                                              <span class="text-dark-gray fs- ">
+                                                <%= savedAddress[s].name %>
+                                              </span><br />
+                                              <%= savedAddress[s].address +" "+ savedAddress[s].city +" "+ savedAddress[s].state %>
+                                            </p>
+                                          </div>
+                                        </div>
+                                        <% } %>                    
+                                    </div>
+                                  </div>
+
+                                </div>
+                            </div>
+                          </div>
+            <% }else if (user.name && savedAddress.length ==0){ %>
+              <span class="text-dark-gray fw-600 d-block">No Saved Address</span>
+            <%}else{%>
+            
+            <%}%>
+                      </form>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class=" tab-pane fade in h-100" id="tab_seven2">
+        <div class="row">
+          <div class="col-12">
+            <div
+              class="bg-very-light-gray border-radius-6px p-50px lg-p-25px your-order-box">
+              <span
+                class="fs-26 alt-font fw-600 text-dark-gray mb-5px d-block">Your
+                order</span>
+              <table class="w-100 total-price-table your-order-table">
+                <tbody>
+                  <tr>
+                    <th
+                      class="w-60 lg-w-55 xs-w-50 fw-600 text-dark-gray alt-font">
+                      Product
+                    </th>
+                    <td class="fw-600 text-dark-gray alt-font">Total</td>
+                  </tr>
+                  <% if(cart.products) {for(var c=0;c<cart.products.length;c++)
+                    { %>
+                    <tr class="product">
+                      <td class="product-thumbnail">
+                        <a href="/product/cart.products[c].slug"
+                          class="text-dark-gray fw-500 d-block lh-initial">
+                          <%= cart.products[c].name %> x <%=
+                              cart.products[c].quantity%>
+                        </a>
+                      </td>
+                      <td class="product-price" data-title="Price">
+                        <%= cart.products[c].spl_price * cart.products[c].quantity
+                          %>
+                      </td>
+                    </tr>
+                    <% } }%>
+                      <tr class="total-amount">
+                        <th class="fw-600 text-dark-gray alt-font">Total</th>
+                        <td data-title="Total">
+                          <h6
+                            class="d-block fw-700 mb-0 text-dark-gray alt-font">
+                            <%= parseFloat(cart.totalAmount).toFixed(2) %>
+                          </h6>
+                        </td>
+                      </tr>
+                      <tr  >
+                        <th class="fw-600 text-dark-gray alt-font">To be paid</th>
+                        <td data-title="Total">
+                          <h6
+                            class="d-block fw-700 mb-0 text-dark-gray alt-font" id="amount_after_cp">
+                            <%= parseFloat(cart.totalAmount).toFixed(2) %>
+                          </h6>
+                        </td>
+                      </tr>
+                </tbody>
+              </table>
+              <p class="fs-14 lh-26">
+                Your personal data will be used to process your order, support
+                your experience throughout this website, and for other purposes
+                described in our
+                <a class="text-decoration-line-bottom text-dark-gray fw-500"
+                  href="#">privacy policy.</a>
+              </p>
+              <div
+                class="position-relative terms-condition-box text-start d-flex align-items-center">
+                <label>
+                  <input type="checkbox" name="terms_condition"
+                    id="terms_condition3" value="1"
+                    class="terms-condition check-box align-middle" />
+                  <span class="box fs-14 lh-24">I have agree to the website
+                    <a href="#"
+                      class="text-decoration-line-bottom text-dark-gray fw-500">terms
+                      and
+                      conditions.</a></span>
+                </label>
+              </div>
+              <% if(cart.totalAmount>0) { %>
+                <a id="place-order-btn"
+                  class="btn btn-base-color btn-extra-large btn-switch-text btn-round-edge btn-box-shadow w-100 text-transform-none mt-30px">
+                  <span>
+                    <span class="btn-double-text" data-text="Place order">Place
+                      order</span>
+                  </span>
+                </a>
+                <% }else{ %>
+                  <a
+                    class="btn btn-medium-gray btn-extra-large btn-switch-text btn-round-edge btn-box-shadow w-100 text-transform-none mt-30px">
+                    <span>
+                      <span class="btn-double-text"
+                        data-text="Nothing in Cart!!">Place order</span>
+                    </span>
+                  </a>
+                  <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+<%- include('partials/footer') %>
+<script>
+  // scripts.js
+document.addEventListener('DOMContentLoaded', () => {
+  const checkboxes = document.querySelectorAll('.single-checkbox1');
+  const checkboxes2 = document.querySelectorAll('.single-checkbox2');
+
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        checkboxes.forEach(cb => {
+          if (cb !== checkbox) {
+            cb.checked = false;
+          }
+        });
+      }
+    });checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        checkboxes.forEach(cb => {
+          if (cb !== checkbox) {
+            cb.checked = false;
+          }
+        });
+      }
+    });
+  });
+  });
+
+  checkboxes2.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        checkboxes2.forEach(cb => {
+          if (cb !== checkbox) {
+            cb.checked = false;
+          }
+        });
+      }
+    });
+  });
+});
+
+const couponBtn = document.getElementById("coupon-submitter")
+couponBtn.addEventListener("click",()=>{
+  const couponForm = new FormData(document.getElementById("coupon-form"))
+  const couponData = {};
+  couponForm.forEach((value, key) => {
+        couponData[key] = value;
+  });
+  const res_text =  document.getElementById("coupon-result")
+  console.log(couponData);
+  fetch("/verify-coupon", {
+        method: "POST",
+        body: JSON.stringify(couponData),
+        headers: { "Content-Type": "application/json" },
+  }).then(res=>res.json()).then(data=>{
+    if (data.status) {
+      document.getElementById("coupon_input").value = data.data.code
+      document.getElementById("c_form_text").innerText = data.data.code + " "+"Coupon Applied"
+      var act_am = Number(document.getElementById("amount_after_cp").innerText)
+      const s_m = act_am-Number(data.data.total_amount)
+      const p_m = act_am- act_am/Number(data.data.discount)
+      const new_am =  s_m >p_m?p_m:s_m
+      console.log(s_m,p_m,new_am,data.data.amount,data.data.discount);
+      document.getElementById("amount_after_cp").innerHTML =new_am +`<Span class='fs-13 ms-10px text-dark-gray'>-${act_am-new_am}</>`
+      document.getElementById("amount_after_cp").style.display="block"
+      res_text.innerText = "Coupon code Applied" 
+       res_text.style.display="block"
+    }else{
+      res_text.innerText = data.message
+      res_text.style.display="block"
+    }
+  })
+
+})
+
+</script>
+
+  </body>
